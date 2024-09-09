@@ -41,8 +41,13 @@ function fetchAndDisplay() {
 
         (cardContainer.querySelector("#price") as HTMLElement).textContent =
           product.price.toString();
-
+        cardContainer.setAttribute("id", "delete");
         productsContainer.appendChild(cardContainer);
       });
     });
+}
+
+function clearItemCards() {
+  const itemCard = document.querySelectorAll("#delete");
+  itemCard.forEach((itemCard) => itemCard.remove());
 }
