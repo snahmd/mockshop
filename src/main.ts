@@ -161,3 +161,21 @@ filterWomensButton.addEventListener("click", () => {
       });
     });
 });
+
+titleInput.addEventListener("change", () => {
+  clearItemCards();
+  fetch("https://fakestoreapi.com/products")
+    .then((response: Response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch Data");
+      }
+      return response.json();
+    })
+    .then((data: IProduct[]) => {
+      data.forEach((product: IProduct) => {
+        if (product.title.includes(titleInput.value)) {
+          printProduct(product);
+        }
+      });
+    });
+});
