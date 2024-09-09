@@ -1,13 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/src/img/mockshop.png" />
+    <script type="module" src="src/main.ts" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>MockShop</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <h1>MockShop</h1>
+    <section>
+      <input id="itemTitle" type="text" />
+      <select name="" id="sortBy">
+        <option value="0">Sort By</option>
+        <option value="1">⬆️ Lowest Price</option>
+        <option value="2">⬇️ Highest Price</option>
+        <option value="3">⭐️ Best Rating</option>
+      </select>
+      <div class="filterCategories">
+        <p>Filter by Categories:</p>
+        <button id="electronics">Electronics</button>
+        <button id="jewelery">Jewelery</button>
+        <button id="mens">Men's clothing</button>
+        <button id="womens">Women's clothing</button>
+      </div>
+    </section>
+
+    <section id="itemsSection">
+      <div id="itemContainer">
+        <img id="img" src="" alt="" />
+        <h2 id="productName"></h2>
+        <div class="priceCard">
+          <h3 id="price"></h3>
+          <button id="addToCart">Add to cart</button>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
