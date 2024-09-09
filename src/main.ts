@@ -50,3 +50,38 @@ function printProduct(product: IProduct) {
   cardContainer.setAttribute("id", "delete");
   productsContainer.appendChild(cardContainer);
 }
+
+sortByButton.addEventListener("change", () => {
+  clearItemCards();
+  fetch("https://fakestoreapi.com/products")
+    .then((response: Response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch Data");
+      }
+      return response.json();
+    })
+    .then((data: IProduct[]) => {
+      if (Number(sortByButton.value) === 1) {
+        const sortedByLowestPriceItems: IProduct[] = data.sort(
+          (a, b) => a.price - b.price
+        );
+        sortedByLowestPriceItems.forEach((product: IProduct) => {
+          printProduct(product);
+        });
+      } else if (Number(sortByButton.value) === 2) {
+        const sortedByHighestPriceItems: IProduct[] = data.sort(
+          (a, b) => b.price - a.price
+        );
+        sortedByHighestPriceItems.forEach((product: IProduct) => {
+          printProduct(product);
+        });
+      } else if (Number(sortByButton.value) === 3) {
+        const sortedByBestRatingItems: IProduct[] = data.sort(
+          (a, b) => a.rating.rate - b.rating.rate
+        );
+        sortedByBestRatingItems.forEach((product: IProduct) => {
+          printProduct(product);
+        });
+      }
+    });
+});
