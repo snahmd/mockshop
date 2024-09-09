@@ -85,3 +85,79 @@ sortByButton.addEventListener("change", () => {
       }
     });
 });
+
+filterElectronicsButton.addEventListener("click", () => {
+  clearItemCards();
+  fetch("https://fakestoreapi.com/products")
+    .then((response: Response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch Data");
+      }
+      return response.json();
+    })
+    .then((data: IProduct[]) => {
+      const filteredByCategories: IProduct[] = data.filter(
+        (product: IProduct) => product.category === "electronics"
+      );
+      filteredByCategories.forEach((product: IProduct) => {
+        printProduct(product);
+      });
+    });
+});
+
+filterJewelerysButton.addEventListener("click", () => {
+  clearItemCards();
+  fetch("https://fakestoreapi.com/products")
+    .then((response: Response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch Data");
+      }
+      return response.json();
+    })
+    .then((data: IProduct[]) => {
+      const filteredByCategories: IProduct[] = data.filter(
+        (product: IProduct) => product.category === "jewelery"
+      );
+      filteredByCategories.forEach((product: IProduct) => {
+        printProduct(product);
+      });
+    });
+});
+
+filterMensButton.addEventListener("click", () => {
+  clearItemCards();
+  fetch("https://fakestoreapi.com/products")
+    .then((response: Response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch Data");
+      }
+      return response.json();
+    })
+    .then((data: IProduct[]) => {
+      const filteredByCategories: IProduct[] = data.filter(
+        (product: IProduct) => product.category === "men's clothing"
+      );
+      filteredByCategories.forEach((product: IProduct) => {
+        printProduct(product);
+      });
+    });
+});
+
+filterWomensButton.addEventListener("click", () => {
+  clearItemCards();
+  fetch("https://fakestoreapi.com/products")
+    .then((response: Response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch Data");
+      }
+      return response.json();
+    })
+    .then((data: IProduct[]) => {
+      const filteredByCategories: IProduct[] = data.filter(
+        (product: IProduct) => product.category === "women's clothing"
+      );
+      filteredByCategories.forEach((product: IProduct) => {
+        printProduct(product);
+      });
+    });
+});
