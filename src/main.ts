@@ -45,8 +45,9 @@ function printProduct(product: IProduct) {
   (cardContainer.querySelector("#img") as HTMLImageElement).src = product.image;
   (cardContainer.querySelector("#productName") as HTMLElement).textContent =
     product.title;
-  (cardContainer.querySelector("#price") as HTMLElement).textContent =
-    product.price.toString();
+  (
+    cardContainer.querySelector("#price") as HTMLElement
+  ).textContent = `  $${product.price.toString()}`;
   cardContainer.setAttribute("id", "delete");
   productsContainer.appendChild(cardContainer);
 }
