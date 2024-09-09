@@ -27,22 +27,7 @@ function fetchAndDisplay() {
     })
     .then((data: IProduct[]) => {
       data.forEach((product: IProduct) => {
-        console.log(product.image);
-        const cardContainer = document
-          .querySelector("#itemContainer")!
-          .cloneNode(true) as HTMLElement;
-
-        (cardContainer.querySelector("#img") as HTMLImageElement).src =
-          product.image;
-
-        (
-          cardContainer.querySelector("#productName") as HTMLElement
-        ).textContent = product.title;
-
-        (cardContainer.querySelector("#price") as HTMLElement).textContent =
-          product.price.toString();
-        cardContainer.setAttribute("id", "delete");
-        productsContainer.appendChild(cardContainer);
+        printProduct(product);
       });
     });
 }
@@ -50,4 +35,18 @@ function fetchAndDisplay() {
 function clearItemCards() {
   const itemCard = document.querySelectorAll("#delete");
   itemCard.forEach((itemCard) => itemCard.remove());
+}
+
+function printProduct(product: IProduct) {
+  console.log(product.image);
+  const cardContainer = document
+    .querySelector("#itemContainer")!
+    .cloneNode(true) as HTMLElement;
+  (cardContainer.querySelector("#img") as HTMLImageElement).src = product.image;
+  (cardContainer.querySelector("#productName") as HTMLElement).textContent =
+    product.title;
+  (cardContainer.querySelector("#price") as HTMLElement).textContent =
+    product.price.toString();
+  cardContainer.setAttribute("id", "delete");
+  productsContainer.appendChild(cardContainer);
 }
